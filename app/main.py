@@ -18,6 +18,12 @@ def main():
             for word in command_array[1:]:
                 echo += f"{word} "
             print(echo.rstrip())
+        elif command == "type":
+            evaled_command = command_array[1]
+            if evaled_command in ["echo","exit","type"]:
+                print(f"{evaled_command} is a shell builtin")
+            else:
+                print(f"{evaled_command} not found")
         else:
             print(f"{command_array[0]}: command not found")
 
