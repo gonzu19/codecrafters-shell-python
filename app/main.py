@@ -8,10 +8,16 @@ def main():
         sys.stdout.write("$ ")
         sys.stdout.flush()
         # Wait for user input
-        command = input()
-        command_array = command.split()
-        if command_array[0] == "exit":
+        full_command = input()
+        command_array = full_command.split()
+        command = command_array[0]
+        if command == "exit":
             break
+        elif command == "echo":
+            echo = ""
+            for word in command_array[1:]:
+                echo += f"{word} "
+            print(echo.rstrip())
         else:
             print(f"{command_array[0]}: command not found")
 
