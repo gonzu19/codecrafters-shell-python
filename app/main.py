@@ -8,7 +8,9 @@ def main():
     sys.stdout.flush()
 
     # Wait for user input
-    input()
+    command = input()
+    command_array = command.split()
+    print(f"{command_array[0]}: command not found")
 
 
 if __name__ == "__main__":
