@@ -25,6 +25,14 @@ def main():
             shell_type(evaled_command=str(command_array[1])) 
         elif command == "pwd":
             print(os.getcwd())
+        elif command == "cd":
+            path = command_array[1]
+            if os.path.isdir(path):
+                os.chdir(path)
+            elif os.path.isfile(path):
+                print(f"{path} is a file")
+            else:
+                print(f"{path}: No such file or directory")
         else:
             found = False
             if os.path.exists(f"{command}"):
