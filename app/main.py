@@ -23,6 +23,8 @@ def main():
             print(' '.join(command_array[1:]))
         elif command == "type":
             shell_type(evaled_command=str(command_array[1])) 
+        elif command == "pwd":
+            print(os.getcwd())
         else:
             found = False
             if os.path.exists(f"{command}"):
