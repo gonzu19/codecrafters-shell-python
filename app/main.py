@@ -11,6 +11,17 @@ def shell_type(evaled_command:str) -> None:
                 return
     print(f"{evaled_command} not found")
 
+def shell_cd(path:str) -> None:
+    home_dir = os.getenv("HOME")
+    if home_dir:
+       path = path.replace("~",home_dir)
+    if os.path.isdir(path):
+        os.chdir(path)
+    elif os.path.isfile(path):
+        print(f"{path} is a file")
+    else:
+        print(f"{path}: No such file or directory")
+
 
 def main():
     while True:
@@ -27,12 +38,7 @@ def main():
             print(os.getcwd())
         elif command == "cd":
             path = command_array[1]
-            if os.path.isdir(path):
-                os.chdir(path)
-            elif os.path.isfile(path):
-                print(f"{path} is a file")
-            else:
-                print(f"{path}: No such file or directory")
+            shell_cd(path=path)
         else:
             found = False
             if os.path.exists(f"{command}"):
